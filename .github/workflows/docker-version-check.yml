@@ -1,0 +1,17 @@
+name: Docker Version Check
+
+on:
+  workflow_dispatch:   # ✅ Manual-only, never runs automatically
+
+jobs:
+  check:
+    runs-on: ubuntu-latest   # ✅ GitHub-hosted runner
+    steps:
+      - name: Show Docker versions
+        run: |
+          echo "CLI:"
+          docker version --format '{{.Client.Version}}'
+          echo "ENGINE:"
+          docker version --format '{{.Server.Version}}'
+          echo "Full Output:"
+          docker version
